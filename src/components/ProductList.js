@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ products, isLoading }) => {
+const ProductList = ({ products, isLoading, addToCart, onCardClick }) => {
   
   // แสดงข้อความขณะกำลังโหลด
   if (isLoading) {
@@ -15,7 +15,7 @@ const ProductList = ({ products, isLoading }) => {
   return (
     <div className="product-list">
       {products.map((product, index) => (
-        <ProductCard key={index} product={product} />
+        <ProductCard key={index} product={product} addToCart={addToCart} onCardClick={onCardClick}/>
       ))}
     </div>
   );

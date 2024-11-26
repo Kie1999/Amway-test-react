@@ -43,7 +43,7 @@ const App = () => {
     const existingProductIndex = cart.findIndex(
       (item) => item.name === product.name
     );
-
+    
     let updatedCart;
     if (existingProductIndex !== -1) {
       // ให้เพิ่มจำนวนหากมีสินค้าอยู่ในตะกร้าแล้ว
@@ -62,7 +62,7 @@ const App = () => {
   };
 
   const removeFromCart = (index) => {
-    const updatedCart = cart.filter((_, i) => i !== index); // ลบสินค้าออกตาม index
+    const updatedCart = cart.filter((item, i) => i !== index); // ลบสินค้าออกตาม index
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart)); 
   };

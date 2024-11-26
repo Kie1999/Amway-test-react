@@ -11,11 +11,13 @@ const Header = ({ cart, removeFromCart }) => {
   };
 
   // ฟังก์ชันจัดการข้อผิดพลาดเมื่อโหลดภาพไม่ได้
-  const handleError = (index) => {
+  const handleError = (id) => {
+    
     setImageErrors((prevErrors) => ({
       ...prevErrors,
-      [index]: true, // จดจำข้อผิดพลาดของภาพของสินค้าตาม index
+      [id]: true, // set id รูปที่โหลด
     }));
+    
   };
 
   const totalPrice = cart.reduce(
@@ -43,12 +45,12 @@ const Header = ({ cart, removeFromCart }) => {
                   <li key={index} className="cart-item">
                     <img
                       src={
-                        imageErrors[index] || !item.image_url
+                        imageErrors[item.id] || !item.image_url 
                           ? Amway
                           : item.image_url
                       }
                       alt={item.name}
-                      onError={() => handleError(index)}
+                      onError={() => handleError(item.id)}
                       className="cart-item-img"
                     />
                     <div className="cart-item-details">
